@@ -2,40 +2,39 @@
 //By Ibrahim Chehab
 //07/19/21
 
-Rect[] rects = new Rect[9];
+int gridSize = 4;
+Rect[] rects;
+
+void settings(){
+    size (gridSize*200, gridSize*200);  
+}
 
 void setup() {
-  size (600, 600); 
+  rects = new Rect[gridSize*gridSize];
   background(255);
-  rects[0] = new Rect(0, 0, 1);
-  rects[1] = new Rect(0, 200, 2);
-  rects[2] = new Rect(0, 400, 3);
-
-  rects[3] = new Rect(200, 0, 1);
-  rects[4] = new Rect(200, 200, 2);
-  rects[5] = new Rect(200, 400, 3);
-
-  rects[6] = new Rect(400, 0, 1);
-  rects[7] = new Rect(400, 200, 2);
-  rects[8] = new Rect(400, 400, 3);
+  for (int i = 0; i < gridSize; i++) { //<>//
+    for (int j = 0; j < gridSize; j++) {
+      rects[j+(i*gridSize)] = new Rect(i*200, j*200);
+    }
+  }
+ 
 }
 
 void draw() {
   stroke(255);
   fill(0);
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < gridSize*gridSize; i++) {
     rects[i].drawRect();
   }
 }
 
 class Rect {
-  int rectx, recty, index;
+  int rectx, recty;
   int fill = 0;
   int stroke = 255;
-  public Rect(int x, int y, int num) {
+  public Rect(int x, int y) {
     rectx = x;
     recty = y;
-    index = num;
   }
 
   public void drawRect() {
@@ -53,7 +52,7 @@ class Rect {
 }
 
 void mousePressed() {
-  for (int i = 0; i < 9; i++) {
+  for (int i = 0; i < gridSize*gridSize; i++) {
     if (rects[i].isPressed()) {
       if (rects[i].fill == 0) {
         rects[i].fill = 255;
