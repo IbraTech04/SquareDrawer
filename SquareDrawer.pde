@@ -2,7 +2,7 @@
 //By Ibrahim Chehab
 //07/19/21
 
-int gridSize = 4;
+int gridSize = 5;
 int squareSize = 100;
 Rect[] rects;
 
@@ -11,6 +11,7 @@ void settings(){
 }
 
 void setup() {
+  surface.setTitle("IbraTech Sqaure Drawing Machine");
   rects = new Rect[gridSize*gridSize];
   background(255);
   for (int i = 0; i < gridSize; i++) { //<>//
