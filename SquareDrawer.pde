@@ -3,10 +3,11 @@
 //07/19/21
 
 int gridSize = 4;
+int squareSize = 100;
 Rect[] rects;
 
 void settings(){
-    size (gridSize*200, gridSize*200);  
+    size (gridSize*squareSize, gridSize*squareSize);  
 }
 
 void setup() {
@@ -14,7 +15,7 @@ void setup() {
   background(255);
   for (int i = 0; i < gridSize; i++) { //<>//
     for (int j = 0; j < gridSize; j++) {
-      rects[j+(i*gridSize)] = new Rect(i*200, j*200);
+      rects[j+(i*gridSize)] = new Rect(i*squareSize, j*squareSize);
     }
   }
  
@@ -40,11 +41,11 @@ class Rect {
   public void drawRect() {
     stroke(stroke);
     fill(fill);
-    rect(rectx, recty, 200, 200);
+    rect(rectx, recty, squareSize, squareSize);
   }
 
   public boolean isPressed() {
-    if (mousePressed && mouseX >= rectx && mouseX <= rectx + 200 && mouseY >= recty && mouseY <= recty + 200) {
+    if (mousePressed && mouseX >= rectx && mouseX <= rectx + squareSize && mouseY >= recty && mouseY <= recty + squareSize) {
       return true;
     }
     return false;
