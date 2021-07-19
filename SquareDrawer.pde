@@ -31,6 +31,7 @@ void draw() {
 class Rect {
   int rectx, recty, index;
   int fill = 0;
+  int stroke = 255;
   public Rect(int x, int y, int num) {
     rectx = x;
     recty = y;
@@ -38,6 +39,7 @@ class Rect {
   }
 
   public void drawRect() {
+    stroke(stroke);
     fill(fill);
     rect(rectx, recty, 200, 200);
   }
@@ -55,8 +57,10 @@ void mousePressed() {
     if (rects[i].isPressed()) {
       if (rects[i].fill == 0) {
         rects[i].fill = 255;
+        rects[i].stroke = 0;
       } else {
         rects[i].fill = 0;
+        rects[i].stroke = 255;
       }
     }
   }
